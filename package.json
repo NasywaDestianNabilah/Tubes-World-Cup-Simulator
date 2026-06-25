@@ -1,0 +1,29 @@
+{
+  "name": "worldcup-simulator-2026",
+  "version": "1.0.0",
+  "description": "World Cup 2026 Simulator with 48 Teams",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "migrate": "npx prisma migrate dev --name init",
+    "migrate:reset": "npx prisma migrate reset",
+    "seed": "npx prisma db seed",
+    "studio": "npx prisma studio",
+    "build": "npm run migrate && npm run seed"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "jsonwebtoken": "^9.0.2",
+    "prisma": "^5.6.0",
+    "@prisma/client": "^5.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

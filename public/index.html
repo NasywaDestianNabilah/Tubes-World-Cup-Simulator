@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 World Cup 2026 Simulator</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>🏆 FIFA World Cup 2026 Simulator</h1>
+        <nav>
+            <button onclick="showTab('standings')" class="active">📊 Standings</button>
+            <button onclick="showTab('matches')">⚽ Matches</button>
+            <button onclick="showTab('bracket')">🏆 Bracket</button>
+            <button onclick="showTab('admin')">⚙️ Admin</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ===== STANDINGS TAB ===== -->
+        <section id="standings" class="tab active">
+            <h2>📊 Group Standings</h2>
+            <div id="standingsContainer"></div>
+        </section>
+
+        <!-- ===== MATCHES TAB ===== -->
+        <section id="matches" class="tab">
+            <h2>⚽ Match Fixtures & Results</h2>
+            <div id="matchesContainer"></div>
+        </section>
+
+        <!-- ===== BRACKET TAB ===== -->
+        <section id="bracket" class="tab">
+            <h2>🏆 Knockout Bracket</h2>
+            <div id="bracketContainer"></div>
+        </section>
+
+        <!-- ===== ADMIN TAB ===== -->
+        <section id="admin" class="tab">
+            <h2>⚙️ Admin Panel</h2>
+            <div id="adminContainer">
+                
+                <!-- LOGIN FORM -->
+                <div id="loginForm">
+                    <h3>🔐 Admin Login</h3>
+                    <input type="password" id="adminPassword" placeholder="Enter admin password">
+                    <button onclick="login()">Login</button>
+                    <div id="loginMessage"></div>
+                </div>
+                
+                <!-- ADMIN ACTIONS (hidden until login) -->
+                <div id="adminActions" style="display:none;">
+                    
+                    <!-- 1. SETUP TOURNAMENT -->
+                    <h3>📋 Tournament Setup</h3>
+                    <button onclick="setupTournament()">Generate Group Fixtures</button>
+                    
+                    <!-- 2. INPUT MATCH RESULT -->
+                    <h3>📝 Input Match Result</h3>
+                    <select id="matchSelect">
+                        <option value="">Select a match...</option>
+                    </select>
+                    <div class="score-input">
+                        <input type="number" id="scoreA" placeholder="Score A" min="0">
+                        <span>vs</span>
+                        <input type="number" id="scoreB" placeholder="Score B" min="0">
+                    </div>
+                    <button onclick="submitResult()">Submit Result</button>
+                    
+                    <!-- 3. ADVANCE TO KNOCKOUT -->
+                    <h3>🏆 Advance to Knockout</h3>
+                    <button onclick="advanceToKnockout()">Generate Knockout Bracket</button>
+                    
+                    <!-- 4. RESET TOURNAMENT (BONUS) -->
+                    <div style="margin-top: 1.5rem; border-top: 2px solid rgba(255,255,255,0.1); padding-top: 1.5rem;">
+                        <h3 style="color: #e74c3c;">🔄 Reset Tournament</h3>
+                        <button onclick="resetTournament()" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">
+                            Delete All Matches
+                        </button>
+                        <p style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">
+                            ⚠️ This will delete ALL matches (group + knockout). Teams will remain.
+                        </p>
+                    </div>
+                    
+                    <!-- MESSAGE -->
+                    <div id="adminMessage"></div>
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="/js/app.js"></script>
+    <script src="/js/admin.js"></script>
+</body>
+</html>

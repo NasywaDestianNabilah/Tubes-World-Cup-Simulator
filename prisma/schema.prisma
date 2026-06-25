@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Team {
+  id        Int     @id @default(autoincrement())
+  name      String
+  code      String  @unique
+  groupName String  @map("groupName")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  homeMatches Match[] @relation("homeTeam")
+  awayMatches Match[] @relation("awayTeam")
+  
+  @@map("teams")
+}
+
+model Match {
+  id         Int      @id @default(autoincrement())
+  teamAId    Int?     @map("teamAId")  // ← DIUBAH jadi nullable (Int?)
+  teamBId    Int?     @map("teamBId")  // ← DIUBAH jadi nullable (Int?)
+  scoreA     Int?
+  scoreB     Int?
+  phase      String
+  status     String   @default("scheduled")
+  groupName  String?  @map("groupName")
+  round      String?
+  matchOrder Int?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  
+  teamA Team? @relation("homeTeam", fields: [teamAId], references: [id])  // ← DIUBAH jadi Team?
+  teamB Team? @relation("awayTeam", fields: [teamBId], references: [id])  // ← DIUBAH jadi Team?
+  
+  @@map("matches")
+}

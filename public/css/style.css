@@ -1,0 +1,371 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0a0a1a;
+    color: #fff;
+    min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(135deg, #1a1a3e 0%, #2d1b69 50%, #1a1a3e 100%);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    border-bottom: 4px solid #f39c12;
+    box-shadow: 0 4px 20px rgba(243, 156, 18, 0.3);
+}
+
+header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #f39c12, #e74c3c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+nav button {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ccc;
+    border: 2px solid transparent;
+    padding: 0.7rem 1.8rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+nav button:hover {
+    background: rgba(243, 156, 18, 0.2);
+    color: #fff;
+    transform: translateY(-2px);
+    border-color: #f39c12;
+}
+
+nav button.active {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: #fff;
+    border-color: #f39c12;
+    box-shadow: 0 4px 20px rgba(243, 156, 18, 0.4);
+}
+
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.tab {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tab h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #f39c12;
+    border-left: 4px solid #f39c12;
+    padding-left: 1rem;
+}
+
+.standings-group {
+    background: linear-gradient(145deg, #1a1a2e, #16213e);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(243, 156, 18, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.standings-group h3 {
+    font-size: 1.5rem;
+    color: #f39c12;
+    margin-bottom: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+th {
+    background: rgba(243, 156, 18, 0.15);
+    color: #f39c12;
+    padding: 0.8rem 0.5rem;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+td {
+    padding: 0.7rem 0.5rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+tr:hover td {
+    background: rgba(243, 156, 18, 0.05);
+}
+
+tr:first-child td {
+    background: rgba(243, 156, 18, 0.1);
+    font-weight: 600;
+}
+
+td:first-child {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+td:nth-child(2) {
+    text-align: left;
+    font-weight: 600;
+    padding-left: 1rem;
+}
+
+td:last-child {
+    font-weight: 700;
+    color: #f39c12;
+    font-size: 1.1rem;
+}
+
+.match-card {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    padding: 1rem 1.5rem;
+    margin: 0.5rem 0;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.match-card:hover {
+    border-color: rgba(243, 156, 18, 0.3);
+    transform: translateX(5px);
+}
+
+.match-card .team {
+    font-weight: 600;
+    font-size: 1.05rem;
+    min-width: 120px;
+}
+
+.match-card .match-score {
+    font-weight: 700;
+    font-size: 1.3rem;
+    padding: 0 1.5rem;
+    color: #f39c12;
+}
+
+.match-card .match-score.scheduled {
+    color: #666;
+    font-size: 1rem;
+}
+
+.match-card .match-status {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    background: rgba(243, 156, 18, 0.15);
+    color: #f39c12;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.match-card .match-status.finished {
+    background: rgba(46, 204, 113, 0.15);
+    color: #2ecc71;
+}
+
+.match-card .match-status.scheduled {
+    background: rgba(149, 165, 166, 0.15);
+    color: #95a5a6;
+}
+
+.bracket-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+    overflow-x: auto;
+}
+
+.bracket-round {
+    background: linear-gradient(145deg, #1a1a2e, #16213e);
+    padding: 1.5rem;
+    border-radius: 16px;
+    min-width: 200px;
+    border: 1px solid rgba(243, 156, 18, 0.1);
+    flex: 1;
+    max-width: 280px;
+}
+
+.bracket-round h4 {
+    text-align: center;
+    color: #f39c12;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(243, 156, 18, 0.2);
+}
+
+.bracket-match {
+    padding: 0.8rem;
+    margin: 0.6rem 0;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bracket-match .match-score {
+    font-weight: 700;
+    color: #f39c12;
+    padding: 0.3rem 0;
+}
+
+.bracket-match .team-name.tbd {
+    color: #666;
+    font-style: italic;
+}
+
+#adminContainer {
+    background: linear-gradient(145deg, #1a1a2e, #16213e);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(243, 156, 18, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#adminContainer h3 {
+    color: #f39c12;
+    margin: 1.5rem 0 1rem 0;
+    font-size: 1.2rem;
+}
+
+#adminContainer input,
+#adminContainer select {
+    display: block;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    margin: 0.5rem 0;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+#adminContainer input:focus,
+#adminContainer select:focus {
+    outline: none;
+    border-color: #f39c12;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+#adminContainer input::placeholder {
+    color: #666;
+}
+
+#adminContainer select option {
+    background: #1a1a2e;
+    color: #fff;
+}
+
+#adminContainer button {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: #fff;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+#adminContainer button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(243, 156, 18, 0.4);
+}
+
+#adminContainer .score-input {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#adminContainer .score-input input {
+    flex: 1;
+}
+
+#adminContainer .score-input span {
+    color: #f39c12;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+#loginMessage,
+#adminMessage {
+    margin: 1rem 0;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.success {
+    background: rgba(46, 204, 113, 0.15);
+    color: #2ecc71;
+    border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.error {
+    background: rgba(231, 76, 60, 0.15);
+    color: #e74c3c;
+    border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+@media (max-width: 768px) {
+    header h1 { font-size: 1.5rem; }
+    nav button { padding: 0.5rem 1rem; font-size: 0.85rem; }
+    main { padding: 1rem; }
+    table { font-size: 0.75rem; }
+    th, td { padding: 0.4rem 0.2rem; }
+    .match-card { flex-wrap: wrap; justify-content: center; gap: 0.5rem; padding: 0.8rem; }
+    .bracket-container { flex-direction: column; align-items: center; }
+    .bracket-round { max-width: 100%; width: 100%; }
+}
