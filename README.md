@@ -1,4 +1,4 @@
-# World Cup 2026 Simulator
+# Tubes World Cup Simulator
 
 A World Cup 2026 simulator application with 48 teams, featuring match management and tournament tracking.
 
